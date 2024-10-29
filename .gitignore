@@ -23,3 +23,14 @@ go.work.sum
 
 # env file
 .env
+
+/.phpunit.cache
+/node_modules
+.env.backup
+.env.production
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+/.zed
