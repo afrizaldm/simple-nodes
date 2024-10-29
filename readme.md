@@ -11,6 +11,7 @@ Tools yang saya gunakan:
 
 2. Frontend:
 - Node.js
+- Typescript / Javascript
 - Vite
 - Vue.js
 - Vue Router
