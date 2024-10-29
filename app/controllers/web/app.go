@@ -11,5 +11,5 @@ func Index(c *gin.Context) {
 }
 
 func App(c *gin.Context) {
-	c.String(http.StatusOK, "ping pong")
+	c.HTML(http.StatusOK, "app.html", nil)
 }
