@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "go:build": "vite build && go run app/main.go"
     },
     "devDependencies": {
         "axios": "^1.6.8",
