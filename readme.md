@@ -26,20 +26,19 @@ Jalankan dengan perintah:
 git clone https://github.com/afrizaldm/simple-nodes.git
 ```
 
-1. Masuk ke forlder project:
+2. Masuk ke forlder project:
 ```bash
 cd simple-nodes
 ```
 
-1. Install dependensi dengan perintah:
+3. Install dependensi dengan perintah:
 ```bash
 go mod tidy
 ```
 
-1.  Jalankan aplikasi dengan perintah:
+4.  Jalankan aplikasi dengan perintah:
 ```bash
 go run app/main.go
 ```
-
 
 5. Kemudian Silahkan akses halaman di `http://localhost:8080`
