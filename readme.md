@@ -2,13 +2,18 @@
 
 Ini adalah aplikasi node sederhana
 Tools yang saya gunakan:
-- Node.js
+
+1. Backend:
 - Golang
 - Gorm
 - Gin
+
+1. Frontend:
+- Node.js
 - Vite
 - Vue.js
 - Vue Router
+- Sass
 
 Jalankan dengan perintah:
 ```bash
