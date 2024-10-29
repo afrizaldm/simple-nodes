@@ -1,7 +1,5 @@
 <template>
-    <ion-app>
-        <RouterView />
-    </ion-app>
+    <RouterView />
 </template>
 <script setup lang="ts">
 

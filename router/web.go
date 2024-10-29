@@ -21,7 +21,7 @@ func (r *Router) SetupRouter(app *gin.Engine) *gin.Engine {
 	FolderController := web.Node{}
 
 	app.GET("/", web.Index)
-	app.GET("/app", web.Ping)
+	app.GET("/app", web.App)
 	app.GET("/ping", web.Ping)
 
 	app.GET("/nodes", FolderController.Index)

@@ -9,11 +9,12 @@ const routes: any[] = [
     {
         path: '/',
         name: 'index',
-        redirect: { name: 'app' }
+        component: Home
+        // redirect: { name: 'home' }
     },
     {
-        path: '/app',
-        name: 'app',
+        path: '/home',
+        name: 'home',
         component: Home
     }
 ]

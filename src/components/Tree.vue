@@ -1,8 +1,18 @@
 <template>
-    <ul>
-        <li v-for="(node, index) in data" :key="index">
-            {{ node?.name }}
-            <Tree :data="(node.children as any)"></Tree>
+    <ul class="tree">
+        <li v-for="(node, index) in data" :key="index" class="tree-item">
+            <div class="tree-item-content" @click="toggle(node)">
+                <span class="toggle-icon">
+                    {{ node.isToggle ? '-' : '+' }}
+                </span>
+                <span class="tree-item-name">{{ node?.name }}</span>
+            </div>
+            <div class="tree-item-actions">
+                <button @click="edit(node)" class="tree-item-action">Edit</button>
+                <button @click="remove(node)" class="tree-item-action">Hapus</button>
+                <button @click="add(node)" class="tree-item-action">Tambah</button>
+            </div>
+            <Tree v-if="node.isToggle" :data="(node.children as any)"></Tree>
         </li>
     </ul>
 </template>
@@ -15,9 +25,114 @@ interface Props {
 
 let { data } = defineProps<Props>()
 
-// let { data } = withDefaults(defineProps<Props>(), {
-//     data: [] as any,
-// })
+const toggle = (item: Node) => {
+    item.isToggle = !item.isToggle
+}
+
+const edit = (item: Node) => {
+    console.log("Edit:", item);
+}
+
+const remove = (item: Node) => {
+    console.log("Remove:", item);
+}
+
+const add = (item: Node) => {
+    console.log("Add:", item);
+}
 
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.tree {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tree-item {
+    position: relative;
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 1px dashed #ddd;
+
+    &:hover .tree-item-actions {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.tree-item-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #f5f5f5;
+    }
+}
+
+.toggle-icon {
+    font-weight: bold;
+    width: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.tree-item-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.tree-item-actions {
+    margin-top: 5px;
+    display: flex;
+    gap: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    .tree-item-action {
+        padding: 3px 8px;
+        font-size: 12px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+
+        &:first-of-type {
+            background-color: #28a745;
+
+            /* Green for Edit */
+            &:hover {
+                background-color: #218838;
+            }
+        }
+
+        &:nth-of-type(2) {
+            background-color: #dc3545;
+
+            /* Red for Remove */
+            &:hover {
+                background-color: #c82333;
+            }
+        }
+
+        &:last-of-type {
+            background-color: #17a2b8;
+
+            /* Teal for Add */
+            &:hover {
+                background-color: #138496;
+            }
+        }
+    }
+}
+</style>
