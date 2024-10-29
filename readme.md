@@ -8,7 +8,7 @@ Tools yang saya gunakan:
 - Gorm
 - Gin
 
-1. Frontend:
+2. Frontend:
 - Node.js
 - Vite
 - Vue.js
