@@ -3,7 +3,7 @@
         <li v-for="(node, index) in data" :key="index" class="tree-item">
             <div class="tree-item-content" @click="toggle(node)">
                 <span class="toggle-icon">
-                    {{ node.isToggle ? '-' : '+' }}
+                    {{ node.isToggle ? '+' : '-' }}
                 </span>
                 <span class="tree-item-name">{{ node?.name }}</span>
             </div>
@@ -12,7 +12,7 @@
                 <button @click="remove(node)" class="tree-item-action">Hapus</button>
                 <button @click="add(node)" class="tree-item-action">Tambah</button>
             </div>
-            <Tree v-if="node.isToggle" :data="(node.children as any)"></Tree>
+            <Tree v-if="!node.isToggle" :data="(node.children as any)"></Tree>
         </li>
     </ul>
 </template>

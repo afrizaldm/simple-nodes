@@ -26,15 +26,16 @@ const emit = defineEmits<{
     (e: 'add-node', node: { name: string; parent_id: number }): void;
 }>();
 
-const addNode = () => {
+const addNode = async () => {
 
     const parentId: any = Number(route.params?.id) ?? 0
 
-    axios.post('nodes', {
+    await axios.post('nodes', {
         name: name.value,
         parent_id: parentId,
     })
 
+    router.back()
 
 };
 

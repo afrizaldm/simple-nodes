@@ -7,7 +7,8 @@ import (
 )
 
 func Index(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.html", nil)
+	// c.HTML(http.StatusOK, "index.html", nil)
+	c.Redirect(http.StatusFound, "/app")
 }
 
 func App(c *gin.Context) {
