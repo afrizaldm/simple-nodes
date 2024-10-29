@@ -18,6 +18,9 @@
 </template>
 <script setup lang="ts">
 import { Node } from "../types/Node";
+import { axios } from "../modules/axios";
+import { load } from "../services/node";
+import router from "../router";
 
 interface Props {
     data: Node[]
@@ -33,13 +36,25 @@ const edit = (item: Node) => {
     console.log("Edit:", item);
 }
 
-const remove = (item: Node) => {
-    console.log("Remove:", item);
+const remove = async (item: Node) => {
+    const res = await axios.delete('nodes/' + item.id)
+
+    console.log(res)
+
+    load()
 }
 
 const add = (item: Node) => {
-    console.log("Add:", item);
+    router.push("add/" + item.id)
+
 }
+
+const emit = defineEmits<{
+    (e: 'add', node: Node): void;
+    (e: 'remove', node: Node): void;
+    (e: 'edit', node: Node): void;
+}>();
+
 
 </script>
 <style scoped lang="scss">

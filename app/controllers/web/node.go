@@ -136,9 +136,27 @@ func (w *Node) Update(c *gin.Context) {
 
 func (w *Node) Delete(c *gin.Context) {
 
+	// id, _ := strconv.ParseUint(c.Param("id"), 10, 0)
+	// var product models.Node
+	// result := database.DB.Delete(&product, uint(id))
+
+	// if result.Error != nil {
+	// 	c.JSON(http.StatusInternalServerError, gin.H{
+	// 		"status":  "error",
+	// 		"message": "Data can't be deleted.",
+	// 	})
+	// 	return
+	// }
+
+	// c.JSON(http.StatusOK, gin.H{
+	// 	"status":  "success",
+	// 	"message": "Data deleted.",
+	// })
+
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 0)
-	var product models.Node
-	result := database.DB.Delete(&product, uint(id))
+
+	// Menghapus node dengan `id = 1` atau `parent_id = 1`
+	result := database.DB.Where("id = ? OR parent_id = ?", uint(id), uint(id)).Delete(&models.Node{})
 
 	if result.Error != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
