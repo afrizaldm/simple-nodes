@@ -18,6 +18,8 @@ func main() {
 	// Setup application
 	app := bootstrap.New()
 
+	app.Static("/public", "./public")
+
 	app.SetupRouter(router.New())
 
 	app.LoadHTMLGlob("views/**")
