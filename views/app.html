@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expandable Node Tree</title>
+    <style>
+        .node { margin-left: 20px; cursor: pointer; }
+        .children { display: none; }
+    </style>
+</head>
+<body>
+    <div id="nodeContainer"></div>
+
+    <script>
+        async function loadNodes() {
+            const response = await fetch('/nodes');
+            const nodes = await response.json();
+            renderNodes(nodes, document.getElementById('nodeContainer'));
+        }
+
+        function renderNodes(nodes, container) {
+            nodes.forEach(node => {
+                const nodeDiv = document.createElement('div');
+                nodeDiv.className = 'node';
+                nodeDiv.textContent = node.name;
+                nodeDiv.onclick = () => toggleChildren(nodeDiv);
+
+                const childrenDiv = document.createElement('div');
+                childrenDiv.className = 'children';
+                renderNodes(node.children, childrenDiv);
+
+                nodeDiv.appendChild(childrenDiv);
+                container.appendChild(nodeDiv);
+            });
+        }
+
+        function toggleChildren(nodeDiv) {
+            const childrenDiv = nodeDiv.querySelector('.children');
+            childrenDiv.style.display = childrenDiv.style.display === 'none' ? 'block' : 'none';
+        }
+
+        loadNodes();
+    </script>
+</body>
+</html>
