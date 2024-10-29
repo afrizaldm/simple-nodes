@@ -33,7 +33,8 @@ const toggle = (item: Node) => {
 }
 
 const edit = (item: Node) => {
-    console.log("Edit:", item);
+    
+    router.push("edit/" + item.id)
 }
 
 const remove = async (item: Node) => {

@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import Home from "../pages/Home.vue";
 import Add from "../pages/Add.vue";
+import Edit from "../pages/Edit.vue";
 
 const routes: any[] = [
     {
@@ -20,7 +21,7 @@ const routes: any[] = [
     {
         path: '/edit/:id',
         name: 'edit',
-        component: Home
+        component: Edit
     }
 ]
 
